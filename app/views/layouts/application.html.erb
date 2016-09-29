@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EtsyPin</title>
+    <title>HealthTracker</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default">
+      <div class="hero-unit">
+      </div>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <% if current_user %>
+            <ul class="nav navbar-nav pull-right">
+               <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
+               <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+             </ul>
+           <% else %>
+             <ul class="nav navbar-nav">
+               <li><%= link_to 'Twitter', '/auth/twitter' %></li>
+             </ul>
+             <% end %>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

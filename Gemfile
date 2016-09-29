@@ -1,7 +1,14 @@
 source 'https://rubygems.org'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth'
 gem 'vimeo'
 gem 'etsy'
 gem 'dotenv-rails'
+gem 'nokogiri'
+gem 'bcrypt', '~> 3.1.11'
+gem 'rest-client'
+gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -34,7 +41,11 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
   gem 'pry'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
