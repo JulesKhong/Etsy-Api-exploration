@@ -1,0 +1,6 @@
+<h1><%= @user.username%>'s shop</h1>
+<% @listings.each do |listing| %>
+  <h3><%=listing.title%></h3>
+  <%= image_tag(listing.images.first.square) %>
+  <h5>$<%= listing.price %></h5>
+<% end %>
